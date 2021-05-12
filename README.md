@@ -31,3 +31,29 @@
 
 ### 2. Подклчить через composer
 Вот вот добавлю.
+
+
+## Использование:
+Cоздание экземпляра класса:
+```php
+$seoData = new miv\SeoText($_SERVER["SERVER_NAME"]); // передаем текущий домен, необходимо если у вас настроена региональность на поддоменах
+```
+
+При использовании класса в каталоге необходимо передать в метод initData раздел и страницу:
+```php
+$pageNumber = intVal($_REQUEST['PAGEN_2']) ? intVal($_REQUEST['PAGEN_2']) : false;
+$arSeoParams = array(
+    'section_id' => $arResult["VARIABLES"]["SECTION_ID"],
+    'page_number' => $pageNumber
+);
+$seoData->initData('section', $arSeoParams); // Первым параметрам где применять, вторым массив фильтров.
+```
+
+Получение мета данных и текстов:
+```php
+$seoData->title // "title"
+$seoData->description // "description"
+$seoData->h1 // Заголовок h1
+$seoData->text // Основной текст
+$seoData->top_description['TEXT'] // Описание
+```
