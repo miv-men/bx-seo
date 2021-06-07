@@ -1,5 +1,5 @@
 <?
-namespace mivMen;
+namespace MivMen;
 \Bitrix\Main\Loader::includeModule('iblock');
 
 /**
