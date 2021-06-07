@@ -11,7 +11,7 @@ class SeoText{
     const TYPE_SECTION_PROPERTY_VALUE = 922;
     const TYPE_CATALOG_PROPERTY_VALUE = 923;
     const TYPE_MAIN_PAGE_PROPERTY_VALUE = 924;
-	  const TYPE_TRIKOTAZH_PAGE_PROPERTY_VALUE = 940;
+    const TYPE_TRIKOTAZH_PAGE_PROPERTY_VALUE = 940;
     const CITY_IBLOCK_ID = 47; //города
     const SEO_IBLOCK_ID = 54; // ID инфоблока "Сео-тексты"
     const DEFAULT_CITY_ID = 54443; //Идентификатор элемента инфоблока "Города и телефоны, для popup'a, контакктов"
@@ -19,8 +19,8 @@ class SeoText{
     
     private $_cityId;
     private $_arSeoData;
-    
-    function __construct($cityId){
+
+    public function __construct($cityId){
         if (is_numeric($cityId)) {
             $this->_cityId = intVal($cityId);        
         } elseif(is_string($cityId)){
@@ -33,7 +33,7 @@ class SeoText{
         $this->_arSeoData = array();
     }
 
-    function getCityIdByDomain($domain) {
+    public function getCityIdByDomain($domain) {
             $rsElements = \CIBlockElement::GetList(
                 array(),
                 array(
@@ -50,7 +50,7 @@ class SeoText{
             }
     }
 
-    function getCityNameByDomain($domain) {
+    public function getCityNameByDomain($domain) {
         $rsElements = \CIBlockElement::GetList(
             array(),
             array(
@@ -73,7 +73,7 @@ class SeoText{
     /**
     * Метод возвращает указанный параметр сео-данных
     */
-    function __get($name){
+    public function __get($name){
     
         if (array_key_exists($name, $this->_arSeoData)) {
             return $this->_arSeoData[$name];
@@ -85,8 +85,8 @@ class SeoText{
     /**
     * Метод инициализирует сео-данные для указанной сущности
     * @param - $dataType string
-    */    
-    function initData($dataType, $arParams = array()){
+    */
+    public function initData($dataType, $arParams = array()){
     
         switch($dataType){
             case 'main' :
